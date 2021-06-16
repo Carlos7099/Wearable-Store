@@ -1,4 +1,10 @@
-//Inicialmente se va a emplear el boton para mostrar y quitar el menu
+//Inicialmente se redirige http con el que trabaja la API de CouchDB a https
+
+//if (location.protocol !== 'https:') {
+//    location.replace(`https:${location.href.substring(location.protocol.length)}`);
+//}
+
+//Se va a emplear el boton para mostrar y quitar el menu
 //Se ejecutan las lineas para que cuando se pulse el boton de menu, aparezca o desaparezca los elementos de navegacion, por eso se emplea toggle.
 //Ademas se le dice que se crea la clase boton_muestra para que asi se pueda mostrar o quitar modificandolo en CSS.
 document.querySelector('.boton_menu').addEventListener('click', () => {
@@ -62,7 +68,9 @@ window.addEventListener('scroll',progreso);
         xhttp.onreadystatechange = handleResponse_calistenia;
         //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
 
-        var url = "http://carlostfg2021.dyndns.org:5984/calistenia/Full_1/";
+        //var url = "http://carlostfg2021.dyndns.org:5984/calistenia/Full_1/";
+        var url = "https://alejandro-cortijo.herokuapp.com/api/imagenes";
+
         
         console.log(url);
         //Se realiza la peticion GET a la base de datos, por eso su URL, si esto fuese un texto iria aqui donde buscarlo no?
@@ -130,7 +138,7 @@ window.addEventListener('scroll',progreso);
     xhttp.onreadystatechange = handleResponse_karaoke;
     //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
 
-    var url = "http://carlostfg2021.dyndns.org:5984/karaoke/D_ID_1";
+    var url = "http://carlostfg2021.dyndns.org:5984/karaoke/D_ID_1/";
     
     console.log(url);
     //Se realiza la peticion GET a la base de datos, por eso su URL, si esto fuese un texto iria aqui donde buscarlo no?
