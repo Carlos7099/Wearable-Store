@@ -93,7 +93,7 @@ hr {
 
 .contenedor_portada {
     position: relative;
-    height: 600px;
+    height: 700px;
     overflow: hidden;
     margin-bottom: 30px;
 }
@@ -101,7 +101,6 @@ hr {
     /*Portada esta dentro de la clase cuerpo, por eso queremos que ocupe el 100% de ese 90% */
     width: 100%;
     height: 100vh;
-    color: whitesmoke;
     /*Para mostrar la portada de forma que la foto este de fondo */
     background: url('./Imagenes/portada2.jpg') no-repeat center center/cover;
      /*Para que la imagen de portada no se distorsione */
@@ -111,7 +110,7 @@ hr {
     /*Para colocar el texto centrado en mitad de la foto */
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     /*Se crea un margen interior para separarlo de las aplicaciones de descarga */
     margin-bottom: 30px;
@@ -119,11 +118,25 @@ hr {
 
 }
 
+.titulo_portada {
+    
+    font-size: 20px;
+    font-style: oblique;
+    color: blanchedalmond;
+    
+}
+
 .portada p {
     margin-bottom: 40px;
+    color: blanchedalmond;
     text-align: center;
-
+    margin:10px;
+    
 }
+
+
+
+
 
 /* Aplicaciones para la descarga */
 .cuerpo_aplicaciones {

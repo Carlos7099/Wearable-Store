@@ -23,15 +23,15 @@
             <img src="Imagenes/logo_small3.png" alt="Wearable App Logo" class="Logo">
             <ul class="elementos_navegacion">
                 <li>
-                    <a href="#">Historia de los wearables</a>
+                    <a href="https://www.elespanol.com/elandroidelibre/otros-dispositivos/otros/20160925/historia-wearables-siglos-intentando-vestir-tecnologia/158234766_0.html" target="_blank">Historia de los wearables</a>
                 </li>
 
                 <li>
-                    <a href="#">Pagina de contacto</a>
+                    <a href="mailto:carlosmalaga99@gmail.com">Página de contacto</a>
                 </li>
 
                 <li>
-                    <a href="#">Mas informacion</a>
+                    <a href="https://www.dispositivoswearables.net/" target="_blank">Más información</a>
                 </li>
 
             </ul>          
@@ -47,8 +47,8 @@
                     Bienvenido a la Wearable Store
                 </h3>
 
-                <p class="contenido_portada">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius unde sit quidem sunt nihil sapiente est expedita vitae natus esse? Praesentium accusamus exercitationem temporibus cumque consequuntur ex ipsam deleniti nobis.</p>
-        
+                <p class="parrafo1_portada">Desde hace años el avance de las nuevas tecnologías está influyendo profunda y considerablemente en las actividades de la vida cotidiana y profesional de la sociedad. Un claro ejemplo es el desarrollo de los wearables, Este conjunto de dispositivos se encuentra en constante desarrollo para la mejorar en los tiempos de respuesta y búsqueda de nuevos algoritmos para captar parámetros. Sin embargo, no se ha encontrado ningún soporte software que permita la reprogramación de las aplicaciones de los wearables por parte de otros desarrolladores con el objetivo de perfeccionarlas, obteniendo un equilibrio entre prestaciones y consumo al menor precio posible. </p>
+                <p class="parrafo2_portada">Por lo expuesto anteriormente y teniendo en cuenta dificultad que se encuentra en su propagación, se crea esta plataforma software que permita el alojamiento de las aplicaciones de los wearables de forma que puedan ser reprogramadas para su optimización y posteriormente descargadas para su uso.</p>
             </header>
         </div>
         
@@ -60,23 +60,29 @@
         <div class="cuerpo_aplicaciones">
             <div class="aparecer">
                 <img src="/Imagenes/deporte.jpg" alt="Aplicacion calistenia">
-                <h3>Aplicacion para calistenia</h3>
-                <p>Descripcion de la aplicacion</p>
-                <a href="">Descargar</a>
+                <h3>Aplicación para calistenia</h3>
+                <p>Aplicación que muestra a través de las gafas inteligentes los ejercicios de la rutina seleccionada indicando el número de repeticiones a realizar. </p>
+                <p>Ideal para estar en forma.</p>
+                <!--<a href="http://carlostfg2021.dyndns.org:5984/" class="btn" download="catalogo.txt">Descargar</a>-->
+                <!--<button class="btn_calistenia">Descargar</button>-->
+                <button class="btn_calistenia" onclick=getMessage_calistenia()  href="#">Descargar</button>
+
 
             </div>
             <div class="aparecer">
                 <img src="/Imagenes/karaoke.jpg" alt="Aplicacion Karaoke">
-                <h3>Aplicacion para karaoke</h3>
-                <p>Descripcion de la aplicacion</p>
-                <a href="">Descargar</a>
+                <h3>Aplicación para karaoke</h3>
+                <p>Aplicación que muestra a través de las gafas inteligentes la canción que se desee para poder aprendersela o cantarla en cualquier lugar.</p>
+                <p>Ideal para los melómanos. </p>
+                <button class="btn_karaoke" onclick=getMessage_karaoke()  href="#">Descargar</button>
 
             </div>
             <div class="aparecer">
                 <img src="/Imagenes/guitarra.jpg" alt="Aplicacion guitar-learning">
-                <h3>Aplicacion guitar-learning</h3>
-                <p>Descripcion de la aplicacion</p>
-                <a href="">Descargar</a>
+                <h3>Aplicación guitar-learning</h3>
+                <p>Aplicación que muestra a través de las gafas inteligentes los acordes de la guitarra que debe tocar para aprenderse la melodía.</p>
+                <p>Ideal para sorprender con su gran pasión.</p>
+                <!--<button onclick=getMessage_calistenia()  href="">Descargar</button> -->
 
             </div>
 
@@ -84,7 +90,7 @@
 
         <div class="redes_sociales">
             <section class="redes">
-                <h3>Sigueme para mas proyectos</h3>
+                <h3>Sígueme para más proyectos</h3>
                 <div class="links">
 
 
@@ -92,11 +98,11 @@
                     /></a>
 
                     
-                    <a href="https://www.instagram.com/carlosgonzalez_70/" target="_blank"><img alt="" src="/Imagenes/instagram.png" width=50 height=50  /></a>
+                    <a href="https://www.instagram.com/carlos_ingeniero70/" target="_blank"><img alt="" src="/Imagenes/instagram.png" width=50 height=50  /></a>
 
                     
                     
-                    <a href="http://twitter.com/carlosgnzalez11" target="_blank"><img src="/Imagenes/twitter.jpg" width=50 height=50 alt=""
+                    <a href="https://github.com/Carlos7099/Wearable-Store" target="_blank"><img src="/Imagenes/github.PNG" width=50 height=50 alt=""
                     /></a>
 
                     
@@ -116,8 +122,6 @@
     <!--Para poder enlazar con el archivo js-->
     <script src="main.js"></script>
 
-    <!--Para poder mostrar elementos de forma dinamica-->
-    <script src="https://unpkg.com/scrollreveal"></script>
     
        
 </body>

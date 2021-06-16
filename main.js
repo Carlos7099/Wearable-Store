@@ -8,13 +8,15 @@ document.querySelector('.boton_menu').addEventListener('click', () => {
 /*Para hacer el efecto de que se mueve la portada */ 
 let animacion_portada = document.querySelector('.portada');
 let animacion_titulo = document.querySelector('.titulo_portada');
-let animacion_contenido = document.querySelector('.contenido_portada');
+let animacion_contenido1 = document.querySelector('.parrafo1_portada');
+let animacion_contenido2 = document.querySelector('.parrafo2_portada');
 
 function mover_portada() {
     let tope = document.documentElement.scrollTop;
     animacion_portada.style.transform = 'translateY(' + tope*0.3 + 'px)';
-    animacion_titulo.style.transform = 'translateY(' + tope*0.3 + 'px)';
-    animacion_contenido.style.transform = 'translateY(' + tope*-0.5 + 'px)';
+    animacion_titulo.style.transform = 'translateY(' + tope*-0.25 + 'px)';
+    animacion_contenido1.style.transform = 'translateY(' + tope*-0.25 + 'px)';
+    animacion_contenido2.style.transform = 'translateY(' + tope*-0.25 + 'px)';
 }
 
 window.addEventListener('scroll',mover_portada);
@@ -39,22 +41,152 @@ window.addEventListener('scroll',mostrar_aplicaciones);
 
 function progreso() {
     let progreso  = document.documentElement.scrollTop;
-    console.log(progreso);
+    //console.log(progreso);
 }
 
 window.addEventListener('scroll',progreso);
 
-/*Al final se ha decidido que la portada no, pero la funcion seria asi:
-    let animacion_portada = document.querySelector('.portada');
-    
-    function mostrar_portada() {
-    let altura_portada = animacion_portada.offsetTop;
-    if(altura_portada - 500 < tope) {
-        animacion_portada.style.opacity = 1;
-        animacion_portada.classList.add('muestra_dinamica');
-    }
 
-    */
+    /* FUNCIONES PARA LA PETICION DE DATOS A LA BASE DE DATOS */
+   
+    var xhttp;
+    //Funcion para la conexion con la base de datos, en ella se emplea una variable con la que se va a implementar la conexion
+    function createConnection() {
+        xhttp = new XMLHttpRequest();
+    }
+    
+    //Funcion para realizar la peticion a la base de datos
+    function getMessage_calistenia() {
+        createConnection();
+        //Hasta que no se realiza de forma correcta el protocolo no se realiza el handleresponse
+        xhttp.onreadystatechange = handleResponse_calistenia;
+        //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
+
+        var url = "http://carlostfg2021.dyndns.org:5984/calistenia/Full_1/";
+        
+        console.log(url);
+        //Se realiza la peticion GET a la base de datos, por eso su URL, si esto fuese un texto iria aqui donde buscarlo no?
+        xhttp.open("GET", url, true);
+        //Se obtiene el documento en formato json
+        xhttp.setRequestHeader("Accept", "application/json;charset=UTF-8");
+        
+        //xhttp.setRequestHeader("Authorization","Basic Auth");
+
+        //¿?
+        xhttp.send(null);
+    }
+    
+    //Funcion para recibir la respuesta en formato JSON y poder proceder a la descarga
+    function handleResponse_calistenia() {
+
+         
+         //xhttp.readyState == 4 la solicitud se envia y se recibido de forma correcta al servidor
+         //xhttp.status == 200 es como que el servidor esta listo y te manda la respuesta
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+           
+           // Leemos la respuesta en JSON
+
+           var texto = JSON.parse(xhttp.responseText);
+
+           var resultado = "";
+           resultado = resultado + "Tipo de rutina: \t" + texto._id+ "\n";
+           resultado = resultado + "Numero total de ejercicios: \t" + texto.total_exercises+ "\n";
+           resultado = resultado + " \n";
+           
+           for(var i = 0; i <texto.exercises.length ; i++){ 
+             resultado = resultado + " Ejercicio: \t" + texto.exercises[i].description +"\n";
+             resultado = resultado + " Repeticiones: \t" + texto.exercises[i].repetitions +"\n";
+             resultado = resultado + " \n";
+           }
+
+           var element = document.createElement('a');
+
+        //Para proceder con la descarga del archivo
+       //element.setAtribute('href','data:text/plain;charset=uft-8,' + encodeURIComponent(text));
+       element.setAttribute('href','data:text/plain;charset=uft-8,' + encodeURIComponent(resultado));
+
+       //Se crea el atributo para la descarga
+       //element.setAttribute('download',filename);
+       element.setAttribute('download',"rutina_calistenia.txt");
+
+       element.style.display = 'none';
+       document.body.appendChild(element);
+
+       element.click();
+
+       document.body.removeChild(element);
+       }
+   }
+
+   //En lugar de crear el elemento que se muestra a continuacion, para optimizar el programa, en el codigo HTML se ha creado el boton que permita la comunicacion con el servidor
+   //document.getElementById("btn_calistenia").onclick = function (){
+   //    getMessage();
+   //}
+
+   
+   function getMessage_karaoke() {
+    createConnection();
+    //Hasta que no se realiza de forma correcta el protocolo no se realiza el handleresponse
+    xhttp.onreadystatechange = handleResponse_karaoke;
+    //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
+
+    var url = "http://carlostfg2021.dyndns.org:5984/karaoke/D_ID_1";
+    
+    console.log(url);
+    //Se realiza la peticion GET a la base de datos, por eso su URL, si esto fuese un texto iria aqui donde buscarlo no?
+    xhttp.open("GET", url, true);
+    //Se obtiene el documento en formato json
+    xhttp.setRequestHeader("Accept", "application/json;charset=UTF-8");
+    
+    xhttp.send(null);
+}
+
+//Funcion para recibir la respuesta en formato JSON y poder proceder a la descarga
+function handleResponse_karaoke() {
+
+     
+     //xhttp.readyState == 4 la solicitud se envia y se recibido de forma correcta al servidor
+     //xhttp.status == 200 es como que el servidor esta listo y te manda la respuesta
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+       
+       // Leemos la respuesta en JSON
+
+       var texto = JSON.parse(xhttp.responseText);
+
+       var resultado = "";
+       resultado = resultado + "Id de la canción: \t" + texto._id+ "\n";
+       resultado = resultado + "Numero de lineas de la canción: \t" + texto.total_lines + "\n";
+       resultado = resultado + " \n";
+       resultado = resultado + " Canción: \t" + texto.lyrics[0].first +"\n";
+       resultado = resultado + " Autor: \t" + texto.lyrics[0].second +"\n";
+       resultado = resultado + " \n";
+
+       for(var i = 1; i <texto.lyrics.length ; i++){ 
+         resultado = resultado + " Letra: \t" + texto.lyrics[i].first +"\n";
+         resultado = resultado + " Letra: \t" + texto.lyrics[i].second +"\n";
+         resultado = resultado + " \n";
+         //resultado = resultado + " Duracion: \t" + texto.lyrics[i].duration +"\n";
+         
+       }
+
+       var element = document.createElement('a');
+
+        //Para proceder con la descarga del archivo
+        
+        element.setAttribute('href','data:text/plain;charset=uft-8,' + encodeURIComponent(resultado));
+
+        //Se crea el atributo para la descarga
+        element.setAttribute('download',"cancion_seleccionada.txt");
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+   }
+}
+
 
 
 
