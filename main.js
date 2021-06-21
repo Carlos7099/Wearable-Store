@@ -68,8 +68,8 @@ window.addEventListener('scroll',progreso);
         xhttp.onreadystatechange = handleResponse_calistenia;
         //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
 
-        //var url = "http://carlostfg2021.dyndns.org:5984/calistenia/Full_1/";
-        var url = "https://alejandro-cortijo.herokuapp.com/api/imagenes";
+        var url = "https://carlostfg.herokuapp.com/api/calistenia";
+        //var url = "https://Carlostfg2021.dyndns.org:6984/calistenia/Full_1";
 
         
         console.log(url);
@@ -131,6 +131,68 @@ window.addEventListener('scroll',progreso);
    //    getMessage();
    //}
 
+   //Funcion para realizar la peticion a la base de datos
+   function getMessage_calistenia2() {
+    createConnection();
+    //Hasta que no se realiza de forma correcta el protocolo no se realiza el handleresponse
+    xhttp.onreadystatechange = handleResponse_calistenia2;
+    //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
+
+    var url = "http://carlostfg2021.dyndns.org:5984/calistenia/Full_1/";
+    //var url = "https://Carlostfg2021.dyndns.org:6984/calistenia/Full_1";
+
+    
+    console.log(url);
+    //Se realiza la peticion GET a la base de datos, por eso su URL, si esto fuese un texto iria aqui donde buscarlo no?
+    xhttp.open("GET", url, true);
+    //Se obtiene el documento en formato json
+    xhttp.setRequestHeader("Accept", "application/json;charset=UTF-8");
+    
+    //xhttp.setRequestHeader("Authorization","Basic Auth");
+
+    //¿?
+    xhttp.send(null);
+}
+
+//Funcion para recibir la respuesta en formato JSON y poder proceder a la descarga
+function handleResponse_calistenia2() {
+
+     
+     //xhttp.readyState == 4 la solicitud se envia y se recibido de forma correcta al servidor
+     //xhttp.status == 200 es como que el servidor esta listo y te manda la respuesta
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+       
+       // Leemos la respuesta en JSON
+
+       var texto = xhttp.responseText;
+
+
+       var element = document.createElement('a');
+
+    //Para proceder con la descarga del archivo
+   //element.setAtribute('href','data:text/plain;charset=uft-8,' + encodeURIComponent(text));
+   element.setAttribute('href','data:text/plain;charset=uft-8,' + encodeURIComponent(texto));
+
+   //Se crea el atributo para la descarga
+   //element.setAttribute('download',filename);
+   element.setAttribute('download',"rutina_calistenia.txt");
+
+   element.style.display = 'none';
+   document.body.appendChild(element);
+
+   element.click();
+
+   document.body.removeChild(element);
+   }
+}
+
+//En lugar de crear el elemento que se muestra a continuacion, para optimizar el programa, en el codigo HTML se ha creado el boton que permita la comunicacion con el servidor
+//document.getElementById("btn_calistenia").onclick = function (){
+//    getMessage();
+//}
+
+   
+
    
    function getMessage_karaoke() {
     createConnection();
@@ -138,7 +200,7 @@ window.addEventListener('scroll',progreso);
     xhttp.onreadystatechange = handleResponse_karaoke;
     //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
 
-    var url = "http://carlostfg2021.dyndns.org:5984/karaoke/D_ID_1/";
+    var url = "https://carlostfg.herokuapp.com/api/karaoke";
     
     console.log(url);
     //Se realiza la peticion GET a la base de datos, por eso su URL, si esto fuese un texto iria aqui donde buscarlo no?
@@ -182,6 +244,53 @@ function handleResponse_karaoke() {
         //Para proceder con la descarga del archivo
         
         element.setAttribute('href','data:text/plain;charset=uft-8,' + encodeURIComponent(resultado));
+
+        //Se crea el atributo para la descarga
+        element.setAttribute('download',"cancion_seleccionada.txt");
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+   }
+}
+
+function getMessage_karaoke2() {
+    createConnection();
+    //Hasta que no se realiza de forma correcta el protocolo no se realiza el handleresponse
+    xhttp.onreadystatechange = handleResponse_karaoke2;
+    //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
+
+    var url = "http://carlostfg2021.dyndns.org:5984/karaoke/D_ID_1/";
+    
+    console.log(url);
+    //Se realiza la peticion GET a la base de datos, por eso su URL, si esto fuese un texto iria aqui donde buscarlo no?
+    xhttp.open("GET", url, true);
+    //Se obtiene el documento en formato json
+    xhttp.setRequestHeader("Accept", "application/json;charset=UTF-8");
+    
+    xhttp.send(null);
+}
+
+//Funcion para recibir la respuesta en formato JSON y poder proceder a la descarga
+function handleResponse_karaoke2() {
+
+     
+     //xhttp.readyState == 4 la solicitud se envia y se recibido de forma correcta al servidor
+     //xhttp.status == 200 es como que el servidor esta listo y te manda la respuesta
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+       
+       // Leemos la respuesta en JSON
+
+       var texto = xhttp.responseText;
+
+       var element = document.createElement('a');
+
+        //Para proceder con la descarga del archivo
+        
+        element.setAttribute('href','data:text/plain;charset=uft-8,' + encodeURIComponent(texto));
 
         //Se crea el atributo para la descarga
         element.setAttribute('download',"cancion_seleccionada.txt");
