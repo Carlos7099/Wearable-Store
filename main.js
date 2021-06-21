@@ -95,15 +95,15 @@ window.addEventListener('scroll',progreso);
            // Leemos la respuesta en JSON
 
            var texto = JSON.parse(xhttp.responseText);
-
+            console.log(texto);
            var resultado = "";
-           resultado = resultado + "Tipo de rutina: \t" + texto._id+ "\n";
-           resultado = resultado + "Numero total de ejercicios: \t" + texto.total_exercises+ "\n";
+           resultado = resultado + "Tipo de rutina: \t" + texto[0]._id+ "\n";
+           resultado = resultado + "Numero total de ejercicios: \t" + texto[0].total_exercises+ "\n";
            resultado = resultado + " \n";
            
-           for(var i = 0; i <texto.exercises.length ; i++){ 
-             resultado = resultado + " Ejercicio: \t" + texto.exercises[i].description +"\n";
-             resultado = resultado + " Repeticiones: \t" + texto.exercises[i].repetitions +"\n";
+          for(var i = 0; i <texto[0].exercises.length ; i++){ 
+             resultado = resultado + " Ejercicio: \t" + texto[0].exercises[i].description +"\n";
+             resultado = resultado + " Repeticiones: \t" + texto[0].exercises[i].repetitions +"\n";
              resultado = resultado + " \n";
            }
 
@@ -224,16 +224,16 @@ function handleResponse_karaoke() {
        var texto = JSON.parse(xhttp.responseText);
 
        var resultado = "";
-       resultado = resultado + "Id de la canción: \t" + texto._id+ "\n";
-       resultado = resultado + "Numero de lineas de la canción: \t" + texto.total_lines + "\n";
+       resultado = resultado + "Id de la canción: \t" + texto[0]._id+ "\n";
+       resultado = resultado + "Numero de lineas de la canción: \t" + texto[0].total_lines + "\n";
        resultado = resultado + " \n";
-       resultado = resultado + " Canción: \t" + texto.lyrics[0].first +"\n";
-       resultado = resultado + " Autor: \t" + texto.lyrics[0].second +"\n";
+       resultado = resultado + " Canción: \t" + texto[0].lyrics[0].first +"\n";
+       resultado = resultado + " Autor: \t" + texto[0].lyrics[0].second +"\n";
        resultado = resultado + " \n";
 
-       for(var i = 1; i <texto.lyrics.length ; i++){ 
-         resultado = resultado + " Letra: \t" + texto.lyrics[i].first +"\n";
-         resultado = resultado + " Letra: \t" + texto.lyrics[i].second +"\n";
+       for(var i = 1; i <texto[0].lyrics.length ; i++){ 
+         resultado = resultado + " Letra: \t" + texto[0].lyrics[i].first +"\n";
+         resultado = resultado + " Letra: \t" + texto[0].lyrics[i].second +"\n";
          resultado = resultado + " \n";
          //resultado = resultado + " Duracion: \t" + texto.lyrics[i].duration +"\n";
          
