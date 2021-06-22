@@ -69,7 +69,7 @@ window.addEventListener('scroll',progreso);
         //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
 
         var url = "https://carlostfg.herokuapp.com/api/calistenia";
-        //var url = "https://Carlostfg2021.dyndns.org:6984/calistenia/Full_1";
+    
 
         
         console.log(url);
@@ -138,8 +138,8 @@ window.addEventListener('scroll',progreso);
     xhttp.onreadystatechange = handleResponse_calistenia2;
     //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
 
-    var url = "http://carlostfg2021.dyndns.org:5984/calistenia/Full_1/";
-    //var url = "https://Carlostfg2021.dyndns.org:6984/calistenia/Full_1";
+    var url = "https://carlostfg.herokuapp.com/api/calistenia";
+    
 
     
     console.log(url);
@@ -263,7 +263,8 @@ function getMessage_karaoke2() {
     xhttp.onreadystatechange = handleResponse_karaoke2;
     //En caso de tener un buscador: var keyword = document.getElementById("keyword").value;
 
-    var url = "http://carlostfg2021.dyndns.org:5984/karaoke/D_ID_1/";
+    var url = "https://carlostfg.herokuapp.com/api/karaoke";
+    
     
     console.log(url);
     //Se realiza la peticion GET a la base de datos, por eso su URL, si esto fuese un texto iria aqui donde buscarlo no?
